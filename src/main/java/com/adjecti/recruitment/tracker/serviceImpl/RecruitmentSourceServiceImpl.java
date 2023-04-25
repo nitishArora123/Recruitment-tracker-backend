@@ -47,8 +47,9 @@ public class RecruitmentSourceServiceImpl implements RecruitmentSourceService {
 	public RecruitementSource updateRecruitementSource(long id, RecruitementSource recruitementSource) {
 		RecruitementSource source = recruitmentSourceRepository.findById(id).get();
 		if(source != null) {
-			source.setId(recruitementSource.getId());
+			//source.setId(recruitementSource.getId());
 			source.setName(recruitementSource.getName());
+			recruitmentSourceRepository.save(source);
 		}else {
 			throw new DataNotFoundException("Not found");
 		}

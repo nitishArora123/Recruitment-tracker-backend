@@ -40,6 +40,7 @@ public class CandidateServiceImpl implements CandidateService {
 			user.setRecruitmentSourceId(candidate.getRecruitmentSourceId());
 			user.setAppliedDate(candidate.getAppliedDate());
 			user.setComments(candidate.getComments());
+			candidateRepository.save(user);
 		} else {
 			throw new DataNotFoundException("Data For Particular Id is Not Available");
 		}

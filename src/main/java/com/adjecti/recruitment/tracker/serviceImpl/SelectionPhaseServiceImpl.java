@@ -45,8 +45,9 @@ public class SelectionPhaseServiceImpl  implements SelectionPhasesService{
 	public SelectionPhases updateSelectionPhases(long id, SelectionPhases selectionPhase) {
 		SelectionPhases selectionPhases = selectionPhaseRepository.findById(id).get();
 		if(selectionPhases != null) {
-			selectionPhases.setId(selectionPhase.getId());
+			//selectionPhases.setId(selectionPhase.getId());
 			selectionPhases.setName(selectionPhase.getName());
+			selectionPhaseRepository.save(selectionPhases);
 		}else {
 			throw new DataNotFoundException("Not found");
 		}

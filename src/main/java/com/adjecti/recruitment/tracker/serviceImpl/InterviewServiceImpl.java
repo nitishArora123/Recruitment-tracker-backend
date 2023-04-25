@@ -49,6 +49,7 @@ public class InterviewServiceImpl implements InterviewService {
 			interviewer.setInterviewMode(interview.getInterviewMode());
 			interviewer.setRemarks(interview.getRemarks());
 			interviewer.setId(interview.getId());
+			interviewRepository.save(interviewer);
 		}else {
 			throw new DataNotFoundException("Not found");
 		}

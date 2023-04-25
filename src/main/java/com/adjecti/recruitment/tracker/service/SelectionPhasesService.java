@@ -14,5 +14,5 @@ public interface SelectionPhasesService {
 	
 	public SelectionPhases addSelectionPhase(SelectionPhases selectionPhase);
 	
-	 public SelectionPhases updateSelectionPhases(long id , SelectionPhases selectionPhases);
+	public SelectionPhases updateSelectionPhases(long id , SelectionPhases selectionPhases);
 }
