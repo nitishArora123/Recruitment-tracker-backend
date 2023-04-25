@@ -1,4 +1,4 @@
-package com.adjecti.recuritment.tracker.model;
+package com.adjecti.recruitment.tracker.model;
 
 import java.io.File;
 import java.util.Date;
@@ -11,8 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="candidate")
 public class Candidate {
 
 	@Id
@@ -22,7 +24,7 @@ public class Candidate {
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	
+	private long departmentId;
 	private long designationId;
 	private long recruiterId;
 	private long recruitmentSourceId;
@@ -55,6 +57,12 @@ public class Candidate {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public long getDepartmentId() {
+		return departmentId;
+	}
+	public void setDepartmentId(long departmentId) {
+		this.departmentId = departmentId;
 	}
 	public long getDesignationId() {
 		return designationId;
@@ -110,14 +118,15 @@ public class Candidate {
 	public void setResume(File resume) {
 		this.resume = resume;
 	}
-	public Candidate(long id, String firstName, String middleName, String lastName, long designationId,
-			long recruiterId, long recruitmentSourceId, Date appliedDate, long selectionPhaseId, String comments,
-			long mobile, String address, File resume) {
+	public Candidate(long id, String firstName, String middleName, String lastName, long departmentId,
+			long designationId, long recruiterId, long recruitmentSourceId, Date appliedDate, long selectionPhaseId,
+			String comments, long mobile, String address, File resume) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		this.departmentId = departmentId;
 		this.designationId = designationId;
 		this.recruiterId = recruiterId;
 		this.recruitmentSourceId = recruitmentSourceId;
@@ -133,7 +142,7 @@ public class Candidate {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+
 
 	
 }

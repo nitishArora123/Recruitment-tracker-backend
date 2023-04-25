@@ -1,4 +1,4 @@
-package com.adjecti.recuritment.tracker.model;
+package com.adjecti.recruitment.tracker.model;
 
 
 import java.sql.Time;
@@ -10,8 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table
 public class Interview {
 	
 	@Id
@@ -19,7 +21,7 @@ public class Interview {
 	private long id;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "candidateId")
-	private long candidateId;
+	private Candidate candidateId;
 	private long interviewerId;
 	private String interviewMode;
 	private Time startTime;
@@ -32,10 +34,10 @@ public class Interview {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getCandidateId() {
+	public Candidate getCandidateId() {
 		return candidateId;
 	}
-	public void setCandidateId(long candidateId) {
+	public void setCandidateId(Candidate candidateId) {
 		this.candidateId = candidateId;
 	}
 	public long getInterviewerId() {
@@ -74,8 +76,8 @@ public class Interview {
 	public void setResult(String result) {
 		this.result = result;
 	}
-	public Interview(long id, long candidateId, long interviewerId, String interviewMode, Time startTime, Time endTime,
-			String remarks, String result) {
+	public Interview(long id, Candidate candidateId, long interviewerId, String interviewMode, Time startTime,
+			Time endTime, String remarks, String result) {
 		super();
 		this.id = id;
 		this.candidateId = candidateId;
@@ -90,5 +92,12 @@ public class Interview {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Interview [id=" + id + ", candidateId=" + candidateId + ", interviewerId=" + interviewerId
+				+ ", interviewMode=" + interviewMode + ", startTime=" + startTime + ", endTime=" + endTime
+				+ ", remarks=" + remarks + ", result=" + result + "]";
+	}
+	
 	
 }

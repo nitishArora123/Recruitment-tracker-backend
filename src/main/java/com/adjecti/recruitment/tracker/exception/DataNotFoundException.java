@@ -1,4 +1,4 @@
-package com.adjecti.recuritment.tracker.exception;
+package com.adjecti.recruitment.tracker.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

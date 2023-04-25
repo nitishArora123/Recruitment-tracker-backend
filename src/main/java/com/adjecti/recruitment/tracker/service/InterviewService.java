@@ -1,12 +1,11 @@
-package com.adjecti.recuritment.tracker.service;
+package com.adjecti.recruitment.tracker.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.adjecti.recuritment.tracker.model.Interview;
+import com.adjecti.recruitment.tracker.model.Interview;
 
-@Service
 public interface InterviewService {
 
 	public List<Interview> getAllInterviewDetails();

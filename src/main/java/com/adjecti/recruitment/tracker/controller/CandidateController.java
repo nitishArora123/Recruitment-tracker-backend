@@ -1,4 +1,4 @@
-package com.adjecti.recuritment.tracker.controller;
+package com.adjecti.recruitment.tracker.controller;
 
 import java.util.List;
 
@@ -10,40 +10,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.adjecti.recuritment.tracker.model.Candidate;
-import com.adjecti.recuritment.tracker.service.CandidateService;
+import com.adjecti.recruitment.tracker.model.Candidate;
+import com.adjecti.recruitment.tracker.service.CandidateService;
 
-@Controller
-public class RecuritmentTrackerController {
+@RestController
+@RequestMapping("api/v1/candidate")
+public class CandidateController {
 
 	@Autowired
-	CandidateService recuritmentService;
+	CandidateService candidateService;
 
-	@PostMapping("/save")
+	@PostMapping
 	public Candidate saveData(@RequestBody Candidate candidate) {
-		return recuritmentService.saveData(candidate);
+		return candidateService.saveData(candidate);
 	}
 
-	@GetMapping("/get/{id}")
+	@GetMapping("{id}")
 	public Candidate getById(@PathVariable("id") long id) {
-		return recuritmentService.getDataById(id);
+		return candidateService.getDataById(id);
 
 	}
 
-	@GetMapping("/getAll")
+	@GetMapping
 	public List<Candidate> getAllData() {
-		return recuritmentService.getAllCandidateData();
+		return candidateService.getAllCandidateData();
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("{id}")
 	public void deleteCandidate(@PathVariable("id") long id) {
-		recuritmentService.deleteCandidateData(id);
+		candidateService.deleteCandidateData(id);
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("{id}")
 	public Candidate updateById(@PathVariable("id") long id, @RequestBody Candidate candidate) {
-		return recuritmentService.updateCandiadateData(id, candidate);
+		return candidateService.updateCandiadateData(id, candidate);
 
 	}
 
