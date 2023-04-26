@@ -14,41 +14,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.adjecti.recruitment.tracker.model.Interview;
 import com.adjecti.recruitment.tracker.model.SelectionPhases;
-import com.adjecti.recruitment.tracker.serviceImpl.SelectionPhaseServiceImpl;
+import com.adjecti.recruitment.tracker.service.SelectionPhasesService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("api/v1/selectionPhase")
 public class SelectionPhasesController {
 
 	@Autowired
-	private SelectionPhaseServiceImpl selectionPhases;
+	private SelectionPhasesService selectionPhaseService;
 
 	@PostMapping
 	public ResponseEntity<SelectionPhases> addSelectionPhase(@RequestBody SelectionPhases selectionPhase) {
-		return new ResponseEntity<SelectionPhases>(selectionPhases.addSelectionPhase(selectionPhase),HttpStatus.OK);
+		return new ResponseEntity<SelectionPhases>(selectionPhaseService.addSelectionPhase(selectionPhase),HttpStatus.OK);
 	}
 
 	@GetMapping
 	public List<SelectionPhases> getAllPhases() {
-		return selectionPhases.getAllPhases();
+		return selectionPhaseService.getAllPhases();
 	}
 
 	@GetMapping("{id}")
 	public ResponseEntity<SelectionPhases> getPhaseById(@PathVariable("id") long id) {
-		return new ResponseEntity<SelectionPhases>(selectionPhases.getById(id),HttpStatus.OK);
+		return new ResponseEntity<SelectionPhases>(selectionPhaseService.getById(id),HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
 	public void deleteSelectionPhase(@PathVariable("id") long id) {
-		selectionPhases.deleteById(id);
+		selectionPhaseService.deleteById(id);
 	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<SelectionPhases> updateSelectionPhases(@PathVariable("id") long id,
 			@RequestBody SelectionPhases selectionPhase) {
-		return new ResponseEntity<SelectionPhases>( selectionPhases.updateSelectionPhases(id, selectionPhase),HttpStatus.OK);
+		return new ResponseEntity<SelectionPhases>(selectionPhaseService.updateSelectionPhases(id, selectionPhase),HttpStatus.OK);
 	}
 }
