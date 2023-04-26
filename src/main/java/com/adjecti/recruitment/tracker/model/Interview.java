@@ -2,6 +2,9 @@ package com.adjecti.recruitment.tracker.model;
 
 
 import java.sql.Time;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,6 +29,7 @@ public class Interview {
 	private String interviewMode;
 	private Time startTime;
 	private Time endTime;
+	private Date interviewDate;
 	private String remarks;
 	private String result;
 	public long getId() {
@@ -64,8 +68,31 @@ public class Interview {
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
 	public String getRemarks() {
 		return remarks;
+	}
+	public Interview() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Interview(long id, Candidate candidateId, long interviewerId, String interviewMode, Time startTime,
+			Time endTime, Date interviewDate, String remarks, String result) {
+		super();
+		this.id = id;
+		this.candidateId = candidateId;
+		this.interviewerId = interviewerId;
+		this.interviewMode = interviewMode;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.interviewDate = interviewDate;
+		this.remarks = remarks;
+		this.result = result;
 	}
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
@@ -76,28 +103,5 @@ public class Interview {
 	public void setResult(String result) {
 		this.result = result;
 	}
-	public Interview(long id, Candidate candidateId, long interviewerId, String interviewMode, Time startTime,
-			Time endTime, String remarks, String result) {
-		super();
-		this.id = id;
-		this.candidateId = candidateId;
-		this.interviewerId = interviewerId;
-		this.interviewMode = interviewMode;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.remarks = remarks;
-		this.result = result;
-	}
-	public Interview() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Interview [id=" + id + ", candidateId=" + candidateId + ", interviewerId=" + interviewerId
-				+ ", interviewMode=" + interviewMode + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", remarks=" + remarks + ", result=" + result + "]";
-	}
-	
-	
+
 }
