@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adjecti.recruitment.tracker.model.RecruitementSource;
 import com.adjecti.recruitment.tracker.serviceImpl.RecruitmentSourceServiceImpl;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/v1/recruitementSource")
 public class RecruitmentSourceController {
@@ -25,7 +26,7 @@ public class RecruitmentSourceController {
 	private RecruitmentSourceServiceImpl recruitementSourceService;
 
 	@GetMapping
-	public List<RecruitementSource> getAllSources(@RequestBody RecruitementSource recruitementSource) {
+	public List<RecruitementSource> getAllSources() {
 
 		return recruitementSourceService.getAll();
 	}
