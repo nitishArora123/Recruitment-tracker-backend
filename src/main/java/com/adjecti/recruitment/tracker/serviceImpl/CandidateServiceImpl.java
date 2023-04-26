@@ -37,7 +37,7 @@ public class CandidateServiceImpl implements CandidateService {
 			user.setDepartmentId(candidate.getDepartmentId());
 			user.setDesignationId(candidate.getDesignationId());
 			user.setRecruiterId(candidate.getRecruiterId());
-			user.setRecruitmentSourceId(candidate.getRecruitmentSourceId());
+			//user.setRecruitmentSourceId(candidate.getRecruitmentSourceId());
 			user.setAppliedDate(candidate.getAppliedDate());
 			user.setComments(candidate.getComments());
 			candidateRepository.save(user);

@@ -3,6 +3,8 @@ package com.adjecti.recruitment.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +26,8 @@ public class SelectionPhasesController {
 	private SelectionPhaseServiceImpl selectionPhases;
 
 	@PostMapping
-	public SelectionPhases addSelectionPhase(@RequestBody SelectionPhases selectionPhase) {
-		return selectionPhases.addSelectionPhase(selectionPhase);
+	public ResponseEntity<SelectionPhases> addSelectionPhase(@RequestBody SelectionPhases selectionPhase) {
+		return new ResponseEntity<SelectionPhases>(selectionPhases.addSelectionPhase(selectionPhase),HttpStatus.OK);
 	}
 
 	@GetMapping
@@ -34,8 +36,8 @@ public class SelectionPhasesController {
 	}
 
 	@GetMapping("{id}")
-	public SelectionPhases getPhaseById(@PathVariable("id") long id) {
-		return selectionPhases.getById(id);
+	public ResponseEntity<SelectionPhases> getPhaseById(@PathVariable("id") long id) {
+		return new ResponseEntity<SelectionPhases>(selectionPhases.getById(id),HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
@@ -44,8 +46,8 @@ public class SelectionPhasesController {
 	}
 
 	@PutMapping("{id}")
-	public SelectionPhases updateSelectionPhases(@PathVariable("id") long id,
+	public ResponseEntity<SelectionPhases> updateSelectionPhases(@PathVariable("id") long id,
 			@RequestBody SelectionPhases selectionPhase) {
-		return selectionPhases.updateSelectionPhases(id, selectionPhase);
+		return new ResponseEntity<SelectionPhases>( selectionPhases.updateSelectionPhases(id, selectionPhase),HttpStatus.OK);
 	}
 }

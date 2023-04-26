@@ -40,6 +40,7 @@ public class InterviewServiceImpl implements InterviewService {
 	@Override
 	public Interview updateScheduledInterview(long id, Interview interview) {
 		Interview interviewer = interviewRepository.findById(id).get();
+		//System.out.println("id--"+id);
 		if(interviewer != null) {
 			interviewer.setCandidateId(interview.getCandidateId());
 			interviewer.setStartTime(interview.getStartTime());
@@ -48,7 +49,6 @@ public class InterviewServiceImpl implements InterviewService {
 			interviewer.setResult(interview.getResult());
 			interviewer.setInterviewMode(interview.getInterviewMode());
 			interviewer.setRemarks(interview.getRemarks());
-			interviewer.setId(interview.getId());
 			interviewer.setInterviewDate(interview.getInterviewDate());
 			interviewRepository.save(interviewer);
 		}else {

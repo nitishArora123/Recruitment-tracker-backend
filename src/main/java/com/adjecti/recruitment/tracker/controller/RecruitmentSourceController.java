@@ -3,6 +3,8 @@ package com.adjecti.recruitment.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +31,13 @@ public class RecruitmentSourceController {
 	}
 
 	@GetMapping("{id}")
-	public RecruitementSource getById(@PathVariable("id") long id) {
-		return recruitementSourceService.getById(id);
+	public ResponseEntity<RecruitementSource> getById(@PathVariable("id") long id) {
+		return new ResponseEntity<RecruitementSource>(recruitementSourceService.getById(id),HttpStatus.OK);
 	}
 
 	@PostMapping
-	public RecruitementSource addRecruitementSource(@RequestBody RecruitementSource recruitementSource) {
-		return recruitementSourceService.addRecruitmentSource(recruitementSource);
+	public ResponseEntity<RecruitementSource> addRecruitementSource(@RequestBody RecruitementSource recruitementSource) {
+		return new ResponseEntity<RecruitementSource>(recruitementSourceService.addRecruitmentSource(recruitementSource),HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
@@ -44,9 +46,9 @@ public class RecruitmentSourceController {
 	}
 
 	@PutMapping("{id}")
-	public RecruitementSource updateRecruitementSource(@PathVariable("id") long id,
+	public ResponseEntity<RecruitementSource> updateRecruitementSource(@PathVariable("id") long id,
 			@RequestBody RecruitementSource recSource) {
-		return recruitementSourceService.updateRecruitementSource(id, recSource);
+		return new ResponseEntity<RecruitementSource>(recruitementSourceService.updateRecruitementSource(id, recSource),HttpStatus.OK);
 	}
 
 }

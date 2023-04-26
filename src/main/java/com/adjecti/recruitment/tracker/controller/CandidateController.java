@@ -3,6 +3,9 @@ package com.adjecti.recruitment.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,19 +27,25 @@ public class CandidateController {
 	CandidateService candidateService;
 
 	@PostMapping
-	public Candidate saveData(@RequestBody Candidate candidate) {
-		return candidateService.saveData(candidate);
+	public ResponseEntity<Candidate> saveData(@RequestBody Candidate candidate) {
+	    Candidate savedCandidate = candidateService.saveData(candidate);
+	    return new ResponseEntity<>(savedCandidate, HttpStatus.OK);
 	}
 
-	@GetMapping("{id}")
-	public Candidate getById(@PathVariable("id") long id) {
-		return candidateService.getDataById(id);
 
+	@GetMapping("{id}")
+	public ResponseEntity<Candidate> getById(@PathVariable("id") long id) {
+	    Candidate candidate = candidateService.getDataById(id);
+	    if (candidate != null) {
+	        return new ResponseEntity<>(candidate, HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
 	}
 
 	@GetMapping
 	public List<Candidate> getAllData() {
-		return candidateService.getAllCandidateData();
+		return candidateService.getAllCandidateData(); 
 	}
 
 	@DeleteMapping("{id}")
@@ -45,8 +54,8 @@ public class CandidateController {
 	}
 
 	@PutMapping("{id}")
-	public Candidate updateById(@PathVariable("id") long id, @RequestBody Candidate candidate) {
-		return candidateService.updateCandiadateData(id, candidate);
+	public ResponseEntity<Candidate> updateById(@PathVariable("id") long id, @RequestBody Candidate candidate) {
+		return new ResponseEntity<Candidate>(candidateService.updateCandiadateData(id, candidate),HttpStatus.OK);
 
 	}
 

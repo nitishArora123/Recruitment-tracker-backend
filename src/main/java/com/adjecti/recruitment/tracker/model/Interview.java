@@ -1,6 +1,7 @@
 package com.adjecti.recruitment.tracker.model;
 import java.sql.Time;
 import java.util.Date;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -72,9 +73,14 @@ public class Interview {
 	public String getRemarks() {
 		return remarks;
 	}
-	public Interview() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
 	}
 	public Interview(long id, Candidate candidateId, long interviewerId, String interviewMode, Time startTime,
 			Time endTime, Date interviewDate, String remarks, String result) {
@@ -89,14 +95,10 @@ public class Interview {
 		this.remarks = remarks;
 		this.result = result;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+	public Interview() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
-	}
-
+	
+	
 }

@@ -3,6 +3,9 @@ package com.adjecti.recruitment.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +26,8 @@ public class InterviewController {
 	private InterviewService interviewService;
 	
 	@PostMapping
-	public Interview scheduleInterview(@RequestBody Interview interview) {
-		return interviewService.scheduleInterview(interview);
+	public ResponseEntity<Interview> scheduleInterview(@RequestBody Interview interview) {
+		return new ResponseEntity<Interview>(interviewService.scheduleInterview(interview),HttpStatus.OK);
 	}
 	
 	@GetMapping
@@ -33,8 +36,8 @@ public class InterviewController {
 	}
 	
 	@GetMapping("{id}")
-	public Interview getById(@PathVariable ("id") long id) {
-		return interviewService.getInterviewDetailsById(id);
+	public ResponseEntity<Interview> getById(@PathVariable ("id") long id) {
+		return new ResponseEntity<Interview>(interviewService.getInterviewDetailsById(id),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{id}")
@@ -43,7 +46,7 @@ public class InterviewController {
     }
     
 	@PutMapping("{id}")
-    public Interview updateInterviewDetails(@PathVariable("id") long id, @RequestBody Interview interview ) {
-		return interviewService.updateScheduledInterview(id, interview);
+    public ResponseEntity<Interview> updateInterviewDetails(@PathVariable("id") long id, @RequestBody Interview interview ) {
+		return new ResponseEntity<Interview> (interviewService.updateScheduledInterview(id, interview),HttpStatus.OK);
 	}
 }
