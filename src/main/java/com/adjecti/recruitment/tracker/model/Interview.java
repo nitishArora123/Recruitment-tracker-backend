@@ -1,11 +1,6 @@
 package com.adjecti.recruitment.tracker.model;
-
-
 import java.sql.Time;
 import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

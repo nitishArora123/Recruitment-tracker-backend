@@ -1,5 +1,6 @@
 package com.adjecti.recruitment.tracker.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +11,9 @@ public class RecruitementSource {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "recruitementsourceid")
 	private long id;
+	@Column(name = "recruitementsouce")
 	private String name;
 	public long getId() {
 		return id;
