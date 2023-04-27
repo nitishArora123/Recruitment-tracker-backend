@@ -16,29 +16,29 @@ public class InterviewServiceImpl implements InterviewService {
 	private InterviewRepository interviewRepository;
 	
 	@Override
-	public List<Interview> getAllInterviewDetails() {
+	public List<Interview> getAll() {
 		return interviewRepository.findAll();
 	}
 
 	@Override
-	public void cancelInterview(long id) {
+	public void cancel(long id) {
 		interviewRepository.deleteById(id);
 		
 	}
 
 	@Override
-	public Interview scheduleInterview(Interview interview) {
+	public Interview schedule(Interview interview) {
 		// TODO Auto-generated method stub
 		return interviewRepository.save(interview);
 	}
 
 	@Override
-	public Interview getInterviewDetailsById(long id) {
+	public Interview getById(long id) {
 		return interviewRepository.findById(id).get();
 	}
 
 	@Override
-	public Interview updateScheduledInterview(long id, Interview interview) {
+	public Interview update(long id, Interview interview) {
 		Interview interviewer = interviewRepository.findById(id).get();
 		//System.out.println("id--"+id);
 		if(interviewer != null) {

@@ -26,12 +26,12 @@ public class SelectionPhasesController {
 
 	@PostMapping
 	public ResponseEntity<SelectionPhases> addSelectionPhase(@RequestBody SelectionPhases selectionPhase) {
-		return new ResponseEntity<SelectionPhases>(selectionPhaseService.addSelectionPhase(selectionPhase),HttpStatus.OK);
+		return new ResponseEntity<SelectionPhases>(selectionPhaseService.add(selectionPhase),HttpStatus.OK);
 	}
 
 	@GetMapping
 	public List<SelectionPhases> getAllPhases() {
-		return selectionPhaseService.getAllPhases();
+		return selectionPhaseService.getAll();
 	}
 
 	@GetMapping("{id}")
@@ -41,12 +41,12 @@ public class SelectionPhasesController {
 
 	@DeleteMapping("{id}")
 	public void deleteSelectionPhase(@PathVariable("id") long id) {
-		selectionPhaseService.deleteById(id);
+		selectionPhaseService.delete(id);
 	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<SelectionPhases> updateSelectionPhases(@PathVariable("id") long id,
 			@RequestBody SelectionPhases selectionPhase) {
-		return new ResponseEntity<SelectionPhases>(selectionPhaseService.updateSelectionPhases(id, selectionPhase),HttpStatus.OK);
+		return new ResponseEntity<SelectionPhases>(selectionPhaseService.update(id, selectionPhase),HttpStatus.OK);
 	}
 }

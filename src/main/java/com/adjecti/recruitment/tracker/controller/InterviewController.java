@@ -28,26 +28,26 @@ public class InterviewController {
 	
 	@PostMapping
 	public ResponseEntity<Interview> scheduleInterview(@RequestBody Interview interview) {
-		return new ResponseEntity<Interview>(interviewService.scheduleInterview(interview),HttpStatus.OK);
+		return new ResponseEntity<Interview>(interviewService.schedule(interview),HttpStatus.OK);
 	}
 	
 	@GetMapping
 	public List<Interview> getAllInterviewDetails()	{
-		return interviewService.getAllInterviewDetails();
+		return interviewService.getAll();
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Interview> getById(@PathVariable ("id") long id) {
-		return new ResponseEntity<Interview>(interviewService.getInterviewDetailsById(id),HttpStatus.OK);
+		return new ResponseEntity<Interview>(interviewService.getById(id),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{id}")
     public void cancelInterview(@PathVariable("id") long id) {
-    	interviewService.cancelInterview(id);
+    	interviewService.cancel(id);
     }
     
 	@PutMapping("{id}")
     public ResponseEntity<Interview> updateInterviewDetails(@PathVariable("id") long id, @RequestBody Interview interview ) {
-		return new ResponseEntity<Interview> (interviewService.updateScheduledInterview(id, interview),HttpStatus.OK);
+		return new ResponseEntity<Interview> (interviewService.update(id, interview),HttpStatus.OK);
 	}
 }

@@ -19,7 +19,7 @@ public class SelectionPhaseServiceImpl  implements SelectionPhasesService{
 	
 	
 	@Override
-	public List<SelectionPhases> getAllPhases() {
+	public List<SelectionPhases> getAll() {
 		
 		return selectionPhaseRepository.findAll();
 	}
@@ -31,18 +31,18 @@ public class SelectionPhaseServiceImpl  implements SelectionPhasesService{
 	}
 
 	@Override
-	public void deleteById(long id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
 		selectionPhaseRepository.deleteById(id);
 	}
 
 	@Override
-	public SelectionPhases addSelectionPhase(SelectionPhases selectionPhase) {
+	public SelectionPhases add(SelectionPhases selectionPhase) {
 		 return selectionPhaseRepository.save(selectionPhase);
 	}
 
 	@Override
-	public SelectionPhases updateSelectionPhases(long id, SelectionPhases selectionPhase) {
+	public SelectionPhases update(long id, SelectionPhases selectionPhase) {
 		SelectionPhases selectionPhases = selectionPhaseRepository.findById(id).get();
 		if(selectionPhases != null) {
 			//selectionPhases.setId(selectionPhase.getId());

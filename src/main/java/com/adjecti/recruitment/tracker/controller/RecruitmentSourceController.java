@@ -38,18 +38,18 @@ public class RecruitmentSourceController {
 
 	@PostMapping
 	public ResponseEntity<RecruitementSource> addRecruitementSource(@RequestBody RecruitementSource recruitementSource) {
-		return new ResponseEntity<RecruitementSource>(recruitementSourceService.addRecruitmentSource(recruitementSource),HttpStatus.OK);
+		return new ResponseEntity<RecruitementSource>(recruitementSourceService.add(recruitementSource),HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
 	public void deleteRecruitementSource(@PathVariable("id") long id) {
-		recruitementSourceService.deleteRecruitmentSource(id);
+		recruitementSourceService.delete(id);
 	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<RecruitementSource> updateRecruitementSource(@PathVariable("id") long id,
 			@RequestBody RecruitementSource recSource) {
-		return new ResponseEntity<RecruitementSource>(recruitementSourceService.updateRecruitementSource(id, recSource),HttpStatus.OK);
+		return new ResponseEntity<RecruitementSource>(recruitementSourceService.update(id, recSource),HttpStatus.OK);
 	}
 
 }

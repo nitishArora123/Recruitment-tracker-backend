@@ -8,15 +8,16 @@ import com.adjecti.recruitment.tracker.model.Candidate;
 
 public interface CandidateService  {
 
-	public Candidate saveData(Candidate candidate);
+	public Candidate save(Candidate candidate);
 	
-	public Candidate getDataById(long id);
+	public Candidate getById(long id);
 	
-	public Candidate updateCandiadateData(long id , Candidate candidate);
+	public Candidate update(long id , Candidate candidate);
 	
-	public List<Candidate> getAllCandidateData();
+	public List<Candidate> getAll();
 	
-	public void deleteCandidateData(long id);
+	public void delete(long id);
 	
+	public List<String> findAll();
 	
 }

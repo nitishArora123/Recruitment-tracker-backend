@@ -10,9 +10,9 @@ public interface RecruitmentSourceService {
 	
 	public RecruitementSource getById(long id);
 	
-	public RecruitementSource addRecruitmentSource(RecruitementSource recruitementSource);
+	public RecruitementSource add(RecruitementSource recruitementSource);
 	
-	public void deleteRecruitmentSource(long id);
+	public void delete(long id);
 	
-	public RecruitementSource updateRecruitementSource(long id , RecruitementSource recruitementSource);
+	public RecruitementSource update(long id , RecruitementSource recruitementSource);
 }
