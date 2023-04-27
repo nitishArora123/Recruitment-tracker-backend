@@ -18,6 +18,6 @@ public interface CandidateService  {
 	
 	public void delete(long id);
 	
-	public List<String> findAll();
+	//public List<String> findAll();
 	
 }

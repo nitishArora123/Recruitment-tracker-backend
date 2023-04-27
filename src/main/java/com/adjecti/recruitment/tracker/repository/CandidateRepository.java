@@ -11,8 +11,8 @@ import com.adjecti.recruitment.tracker.model.Candidate;
 
 public interface CandidateRepository extends JpaRepository<Candidate, Long>{
 
-	@Query(value = "SELECT first_name FROM candidate ",nativeQuery = true)
-	public List<Candidate> findAll();
+	//@Query(value = "SELECT first_name FROM candidate ",nativeQuery = true)
+	//public List<String> findAll();
 
 
 }

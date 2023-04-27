@@ -52,9 +52,5 @@ public class CandidateServiceImpl implements CandidateService {
 		candidateRepository.deleteById(id);
 	}
 
-	@Override
-	public List<String> findAll() {
-		return candidateRepository.findAllCandidateNames();
-	}
 
 }

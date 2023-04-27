@@ -61,9 +61,9 @@ public class CandidateController {
 
 	}
 	
-	@GetMapping("/names")
-	public List<String> findAllCandidateNames(){
-		return candidateService.findAll();
-	}
+	/*
+	 * @GetMapping("/names") public List<String> findAllCandidateNames(){ return
+	 * candidateService.findAll(); }
+	 */
 
 }
