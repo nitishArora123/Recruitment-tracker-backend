@@ -31,7 +31,7 @@ public class CandidateController {
 	@PostMapping
 	public ResponseEntity<Candidate> saveData(@RequestBody Candidate candidate) {
 	    Candidate savedCandidate = candidateService.saveData(candidate);
-	    return new ResponseEntity<>(savedCandidate, HttpStatus.OK);
+	    return new ResponseEntity<Candidate>(savedCandidate, HttpStatus.OK);
 	}
 
 

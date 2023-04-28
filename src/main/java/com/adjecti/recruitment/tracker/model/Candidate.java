@@ -26,10 +26,18 @@ public class Candidate {
 	private String lastName;
 	private long departmentId;
 	private long designationId;
+	
 	private long recruiterId;
-	private long recruitmentSourceId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "recruitementsourceid")
+	private RecruitementSource recruitmentSourceId;
+	
 	private Date appliedDate;
-	private long selectionPhaseId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "selectionphaseid")
+	private SelectionPhases selectionPhaseId;
 	private String comments;
 	private long mobile;
 	private String address;
@@ -76,10 +84,10 @@ public class Candidate {
 	public void setRecruiterId(long recruiterId) {
 		this.recruiterId = recruiterId;
 	}
-	public long getRecruitmentSourceId() {
+	public RecruitementSource getRecruitmentSourceId() {
 		return recruitmentSourceId;
 	}
-	public void setRecruitmentSourceId(long recruitmentSourceId) {
+	public void setRecruitmentSourceId(RecruitementSource recruitmentSourceId) {
 		this.recruitmentSourceId = recruitmentSourceId;
 	}
 	public Date getAppliedDate() {
@@ -88,10 +96,10 @@ public class Candidate {
 	public void setAppliedDate(Date appliedDate) {
 		this.appliedDate = appliedDate;
 	}
-	public long getSelectionPhaseId() {
+	public SelectionPhases getSelectionPhaseId() {
 		return selectionPhaseId;
 	}
-	public void setSelectionPhaseId(long selectionPhaseId) {
+	public void setSelectionPhaseId(SelectionPhases selectionPhaseId) {
 		this.selectionPhaseId = selectionPhaseId;
 	}
 	public String getComments() {
@@ -119,8 +127,8 @@ public class Candidate {
 		this.resume = resume;
 	}
 	public Candidate(long id, String firstName, String middleName, String lastName, long departmentId,
-			long designationId, long recruiterId, long recruitmentSourceId, Date appliedDate, long selectionPhaseId,
-			String comments, long mobile, String address, File resume) {
+			long designationId, long recruiterId, RecruitementSource recruitmentSourceId, Date appliedDate,
+			SelectionPhases selectionPhaseId, String comments, long mobile, String address, File resume) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -137,10 +145,23 @@ public class Candidate {
 		this.address = address;
 		this.resume = resume;
 	}
+	@Override
+	public String toString() {
+		return "Candidate [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
+				+ lastName + ", departmentId=" + departmentId + ", designationId=" + designationId + ", recruiterId="
+				+ recruiterId + ", recruitmentSourceId=" + recruitmentSourceId + ", appliedDate=" + appliedDate
+				+ ", selectionPhaseId=" + selectionPhaseId + ", comments=" + comments + ", mobile=" + mobile
+				+ ", address=" + address + ", resume=" + resume + "]";
+	}
 	public Candidate() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	
+	
+	
+	
 	
 
 
