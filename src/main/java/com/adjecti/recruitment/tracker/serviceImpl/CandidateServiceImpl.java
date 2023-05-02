@@ -16,19 +16,19 @@ public class CandidateServiceImpl implements CandidateService {
 	@Autowired
 	public CandidateRepository candidateRepository;
 
-	public Candidate saveData(Candidate candidate) {
+	public Candidate save(Candidate candidate) {
 		return candidateRepository.save(candidate);
 	}
 
-	public Candidate getDataById(long id) {
+	public Candidate getById(long id) {
 		return candidateRepository.findById(id).get();
 	}
 
-	public List<Candidate> getAllCandidateData() {
+	public List<Candidate> getAll() {
 		return candidateRepository.findAll();
 	}
 
-	public Candidate updateCandiadateData(long id, Candidate candidate) {
+	public Candidate update(long id, Candidate candidate) {
 		Candidate user = candidateRepository.findById(id).get();
 		if (user != null) {
 			user.setFirstName(candidate.getFirstName());
@@ -48,8 +48,9 @@ public class CandidateServiceImpl implements CandidateService {
 		return user;
 	}
 
-	public void deleteCandidateData(long id) {
+	public void delete(long id) {
 		candidateRepository.deleteById(id);
 	}
+
 
 }

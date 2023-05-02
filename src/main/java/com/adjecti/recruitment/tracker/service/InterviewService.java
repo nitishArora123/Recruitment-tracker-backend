@@ -8,14 +8,14 @@ import com.adjecti.recruitment.tracker.model.Interview;
 
 public interface InterviewService {
 
-	public List<Interview> getAllInterviewDetails();
+	public List<Interview> getAll();
 	
-	public void cancelInterview(long id);
+	public void cancel(long id);
 	
-	public  Interview scheduleInterview(Interview interview);
+	public  Interview schedule(Interview interview);
 	
-    public Interview getInterviewDetailsById(long id);
+    public Interview getById(long id);
 	
-    public Interview updateScheduledInterview(long id , Interview interview);
+    public Interview update(long id , Interview interview);
 	
 }

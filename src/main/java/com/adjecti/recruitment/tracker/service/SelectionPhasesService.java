@@ -6,13 +6,13 @@ import com.adjecti.recruitment.tracker.model.SelectionPhases;
 
 public interface SelectionPhasesService {
 
-	public List<SelectionPhases> getAllPhases();
+	public List<SelectionPhases> getAll();
 	
 	public SelectionPhases getById(long id);
 	
-	public void deleteById(long id);
+	public void delete(long id);
 	
-	public SelectionPhases addSelectionPhase(SelectionPhases selectionPhase);
+	public SelectionPhases add(SelectionPhases selectionPhase);
 	
-	public SelectionPhases updateSelectionPhases(long id , SelectionPhases selectionPhases);
+	public SelectionPhases update(long id , SelectionPhases selectionPhases);
 }

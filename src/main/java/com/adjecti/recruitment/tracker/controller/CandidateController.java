@@ -30,14 +30,15 @@ public class CandidateController {
 
 	@PostMapping
 	public ResponseEntity<Candidate> saveData(@RequestBody Candidate candidate) {
-	    Candidate savedCandidate = candidateService.saveData(candidate);
-	    return new ResponseEntity<Candidate>(savedCandidate, HttpStatus.OK);
-	}
+	    Candidate savedCandidate = candidateService.save(candidate);
+	    return new ResponseEntity<>(savedCandidate, HttpStatus.OK);
+
+	     }
 
 
 	@GetMapping("{id}")
 	public ResponseEntity<Candidate> getById(@PathVariable("id") long id) {
-	    Candidate candidate = candidateService.getDataById(id);
+	    Candidate candidate = candidateService.getById(id);
 	    if (candidate != null) {
 	        return new ResponseEntity<>(candidate, HttpStatus.OK);
 	    } else {
@@ -47,18 +48,23 @@ public class CandidateController {
 
 	@GetMapping
 	public List<Candidate> getAllData() {
-		return candidateService.getAllCandidateData(); 
+		return candidateService.getAll(); 
 	}
 
 	@DeleteMapping("{id}")
 	public void deleteCandidate(@PathVariable("id") long id) {
-		candidateService.deleteCandidateData(id);
+		candidateService.delete(id);
 	}
 
 	@PutMapping("{id}")
 	public ResponseEntity<Candidate> updateById(@PathVariable("id") long id, @RequestBody Candidate candidate) {
-		return new ResponseEntity<Candidate>(candidateService.updateCandiadateData(id, candidate),HttpStatus.OK);
+		return new ResponseEntity<Candidate>(candidateService.update(id, candidate),HttpStatus.OK);
 
 	}
+	
+	/*
+	 * @GetMapping("/names") public List<String> findAllCandidateNames(){ return
+	 * candidateService.findAll(); }
+	 */
 
 }

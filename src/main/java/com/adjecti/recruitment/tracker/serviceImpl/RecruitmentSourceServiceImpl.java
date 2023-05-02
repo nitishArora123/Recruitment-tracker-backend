@@ -30,13 +30,13 @@ public class RecruitmentSourceServiceImpl implements RecruitmentSourceService {
 	}
 
 	@Override
-	public RecruitementSource addRecruitmentSource(RecruitementSource recruitementSource) {
+	public RecruitementSource add(RecruitementSource recruitementSource) {
 		// TODO Auto-generated method stub
 		return recruitmentSourceRepository.save(recruitementSource);
 	}
 
 	@Override
-	public void deleteRecruitmentSource(long id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
 		recruitmentSourceRepository.deleteById(id);
 		
@@ -44,7 +44,7 @@ public class RecruitmentSourceServiceImpl implements RecruitmentSourceService {
 
 	
 	@Override
-	public RecruitementSource updateRecruitementSource(long id, RecruitementSource recruitementSource) {
+	public RecruitementSource update(long id, RecruitementSource recruitementSource) {
 		RecruitementSource source = recruitmentSourceRepository.findById(id).get();
 		if(source != null) {
 			//source.setId(recruitementSource.getId());
